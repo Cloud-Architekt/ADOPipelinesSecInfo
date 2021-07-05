@@ -31,7 +31,7 @@ Param(
 )
 
     if ($ADOPatUserName -ne $null) {
-        $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $AzDoUserName, $AzDoToken)))
+        $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $ADOPatUserName, $ADOPatToken)))
         $script:Header = @{
             Authorization = ("Basic {0}" -f $base64AuthInfo)
         }
