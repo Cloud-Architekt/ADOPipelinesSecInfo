@@ -30,7 +30,7 @@ Param(
     [Parameter(Mandatory = $false)][string]$ADOPatToken    
 )
 
-    if ($ADOPatUserName -ne $null) {
+    if ($ADOPatUserName -ne "") {
         $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $ADOPatUserName, $ADOPatToken)))
         $script:Header = @{
             Authorization = ("Basic {0}" -f $base64AuthInfo)
@@ -42,7 +42,7 @@ Param(
         }
     }
 
-    if ($ADOOrganizationName -ne $null) {
+    if ($ADOOrganizationName -ne "") {
         $script:UriOrga =  "https://dev.azure.com/$ADOOrganizationName/"
         $script:ADOOrganizationName = $ADOOrganizationName
     }
