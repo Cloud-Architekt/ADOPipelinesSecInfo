@@ -44,7 +44,7 @@ Param(
 
     if ($ADOOrganizationName -ne $null) {
         $script:UriOrga =  "https://dev.azure.com/$ADOOrganizationName/"
-        Write-Host "primary"
+        $script:ADOOrganizationName = $ADOOrganizationName
     }
     else {
         $script:UriOrga =  "$env:SYSTEM_CollectionUri"
