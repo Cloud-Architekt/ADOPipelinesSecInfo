@@ -22,7 +22,7 @@ Param(
     
     $Releases = $AzDOProjects | foreach-object {
         $AzDoProjectName = $_.name
-        $URL = "https://vsrm.dev.azure.com/$AzDoOrganizationName/$AzDoProjectName/_apis/release/releases?api-version=6.0"
+        $URL = "https://vsrm.dev.azure.com/$ADOOrganizationName/$AzDoProjectName/_apis/release/releases?api-version=6.0"
         (Invoke-RestMethod $URL -Headers $Header -ErrorAction Stop).Value
     }
 
@@ -30,7 +30,7 @@ Param(
         $AzDoProjectName = $_.projectReference.Name
         $ReleaseId = $_.id
         $LogFileName = $AzDoProjectName + "_" + $_.Name + ".zip"
-        $URL = "https://vsrm.dev.azure.com/$AzDoOrganizationName/$AzDoProjectName/_apis/Release/releases/$ReleaseId/logs?api-version=6.0-preview.2"
+        $URL = "https://vsrm.dev.azure.com/$AzDoOrganizationName/$ADOOrganizationName/_apis/Release/releases/$ReleaseId/logs?api-version=6.0-preview.2"
         Invoke-RestMethod $URL -Headers $Header -ErrorAction Stop -ContentType "application/zip" -OutFile ($ExportFolder + "\" + $LogFileName)
     }
 }
