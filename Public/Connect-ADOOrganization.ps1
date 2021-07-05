@@ -28,8 +28,8 @@ Param(
     [Parameter(Mandatory = $false)][string]$ADOPatToken    
 )
 
-$script:UriOrga =  "https://dev.azure.com/$AzDoOrganizationName/"
-$script:UriReleaseMgmt = "https://vsrm.dev.azure.com/$AzDoOrganizationName/"
+$script:UriOrga =  "https://dev.azure.com/$ADOOrganizationName/"
+$script:UriReleaseMgmt = "https://vsrm.dev.azure.com/$ADOOrganizationName/"
 
 Function Connect-ADOOrganization
 {
