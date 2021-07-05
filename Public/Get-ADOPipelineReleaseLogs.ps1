@@ -1,4 +1,6 @@
 
+Function Get-ADOPipelineReleaseLogs
+{
 <#
  .Synopsis
   Downloads the logs of release pipelines and store them into single ZIP files.
@@ -16,8 +18,6 @@ Param(
     [Parameter(Mandatory = $false)][string]$ExportFolder="./"
 )
 
-Function Get-ADOPipelineReleaseLogs
-{
     $AzDOProjects = (Invoke-RestMethod ($UriOrga + "_apis/projects?api-version=6.0") -Headers $Header -ErrorAction Stop).Value
     
     $Releases = $AzDOProjects | foreach-object {

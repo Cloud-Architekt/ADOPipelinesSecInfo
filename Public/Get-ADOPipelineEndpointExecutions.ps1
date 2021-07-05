@@ -1,4 +1,6 @@
 
+Function Get-ADOPipelineEndpointExecutions
+{
 <#
  .Synopsis
   Displays execution of service connections from a pipeline.
@@ -11,8 +13,6 @@
    # Export CSV of service connection executions for enrichment or import as WatchList in Azure Sentinel:
    Get-ADOPipelineEndpointExecutions | Export-Csv .\ADOServiceConnectionEnrichment-Watchlist.csv -NoTypeInformation
 #>
-Function Get-ADOPipelineEndpointExecutions
-{
     $AzDOProjects = (Invoke-RestMethod ($UriOrga + "_apis/projects?api-version=6.0") -Headers $Header -ErrorAction Stop).Value
     $ServiceEndpoints = $AzDOProjects | ForEach-Object {
     (Invoke-RestMethod ($UriOrga + $_.name + "/_apis/serviceendpoint/endpoints?api-version=6.1-preview.4") -Headers $Header -ErrorAction Stop).Value

@@ -1,4 +1,6 @@
 
+Function Connect-ADOOrganization
+{
 <#
  .Synopsis
   Generates authorization header for authentication requests as part of the module. 
@@ -28,13 +30,8 @@ Param(
     [Parameter(Mandatory = $false)][string]$ADOPatToken    
 )
 
-$script:UriOrga =  "https://dev.azure.com/$ADOOrganizationName/"
-$script:UriReleaseMgmt = "https://vsrm.dev.azure.com/$ADOOrganizationName/"
-
-Function Connect-ADOOrganization
-{
     if ($ADOPatUserName -ne $null) {
-        $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $ADOPatUserName, $ADOPatToken)))
+        $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $AzDoUserName, $AzDoToken)))
         $script:Header = @{
             Authorization = ("Basic {0}" -f $base64AuthInfo)
         }
@@ -43,5 +40,15 @@ Function Connect-ADOOrganization
         $script:Header = @{
             Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"
         }
+    }
+
+    if ($ADOOrganizationName -ne $null) {
+        $script:UriOrga =  "https://dev.azure.com/$ADOOrganizationName/"
+        $script:UriReleaseMgmt = "https://vsrm.dev.azure.com/$ADOOrganizationName/"
+        Write-Host "primary"
+    }
+    else {
+        $script:UriOrga =  "$env:SYSTEM_CollectionUri"
+        $script:UriReleaseMgmt = $UriOrga.Replace("dev.azure.com","vsrm.dev.azure.com")
     }
 }

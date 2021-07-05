@@ -1,4 +1,6 @@
 
+Function Get-ADOServiceConnectionDetails
+{
 <#
  .Synopsis
   Displays details of all ARM service connections and the relation to the used service principal.
@@ -13,8 +15,6 @@
 
 #>
 
-Function Get-ADOServiceConnectionDetails
-{
     $AzDOProjects = (Invoke-RestMethod ($UriOrga + "_apis/projects?api-version=6.0") -Headers $Header -ErrorAction Stop).Value
     $ServiceEndpoints = $AzDOProjects | ForEach-Object {
         (Invoke-RestMethod ($UriOrga + $_.name + "/_apis/serviceendpoint/endpoints?api-version=6.1-preview.4") -Headers $Header -ErrorAction Stop).Value
