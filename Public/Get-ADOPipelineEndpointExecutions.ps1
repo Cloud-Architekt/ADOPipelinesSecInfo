@@ -7,7 +7,7 @@ Function Get-ADOPipelineEndpointExecutions
 
  .Description
   The following function displays all executions of an ARM service connections from a pipeline.
-  This includes the detailed information about the execution which includes pipeline and process name and the relation to service principal and subscription.
+  This covers detailed information about the execution, including pipeline and process name and the relation to service principal and subscription.
 
  .Example
    # Export CSV of service connection executions for enrichment or import as WatchList in Azure Sentinel:
