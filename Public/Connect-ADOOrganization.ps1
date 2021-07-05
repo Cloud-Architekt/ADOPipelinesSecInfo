@@ -44,11 +44,10 @@ Param(
 
     if ($ADOOrganizationName -ne $null) {
         $script:UriOrga =  "https://dev.azure.com/$ADOOrganizationName/"
-        $script:UriReleaseMgmt = "https://vsrm.dev.azure.com/$ADOOrganizationName/"
         Write-Host "primary"
     }
     else {
         $script:UriOrga =  "$env:SYSTEM_CollectionUri"
-        $script:UriReleaseMgmt = $UriOrga.Replace("dev.azure.com","vsrm.dev.azure.com")
+        $script:ADOOrganizationName = ($UriOrga -split '/')[3]
     }
 }
