@@ -19,7 +19,7 @@ Function Connect-ADOOrganization
 
  .Example
    # Generates Authorization header for DevOps Org "contoso" with PAT of ADO admin
-   Connect-ADOOrganization -ADOOrganizationName "contoso" -ADOPatUserName "john.smith" -AzDoToken "scfwfkriqhsdfjsaflkafsdffdsfdsfds884305"
+   Connect-ADOOrganization -ADOOrganizationName "contoso" -ADOPatUserName "john.smith" -ADOPATToken "scfwfkriqhsdfjsaflkafsdffdsfdsfds884305"
 
 #>
 
